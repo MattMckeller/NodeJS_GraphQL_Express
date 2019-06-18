@@ -1,0 +1,560 @@
+{
+	"info": {
+		"_postman_id": "baa8661c-57fa-4de1-9fd8-483ad67c93d6",
+		"name": "Node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Weather",
+			"item": [
+				{
+					"name": "Weather",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/weather/Boston",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"weather",
+								"Boston"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TaskManager",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Get Profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/users/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/users/5d013a721b6603a6dc90e0ba",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"5d013a721b6603a6dc90e0ba"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c0387fcf-de85-446e-b76e-bdbb80670f1a",
+										"exec": [
+											"if(pm.response.code === 201) {",
+											"    pm.environment.set('authToken', pm.response.json().token)",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Billz DFDS\",\n\t\"age\": 33,\n\t\"email\": \"testz@xiix.com\",\n\t\"password\": \"password1234\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/users",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Bill Updated\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/users/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete My User",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/users/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tasks",
+					"item": [
+						{
+							"name": "Get Tasks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/tasks?limit=3&skip=0&completed=true&sortBy=createdAt:desc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										},
+										{
+											"key": "skip",
+											"value": "0"
+										},
+										{
+											"key": "completed",
+											"value": "true"
+										},
+										{
+											"key": "sortBy",
+											"value": "createdAt:desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Task By ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/tasks/5d08f39dc20b92a094d35f25",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"tasks",
+										"5d08f39dc20b92a094d35f25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Task",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"description\": \"first\",\n\t\"completed\": true\n}"
+								},
+								"url": {
+									"raw": "{{host}}/tasks",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Task",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"description\": \"this is an updated description\",\n\t\"completed\": true\n}"
+								},
+								"url": {
+									"raw": "{{host}}/tasks/5d08f1aa4cfb7743ccbd3f29",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"tasks",
+										"5d08f1aa4cfb7743ccbd3f29"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete task by id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/tasks/5d08f1b24cfb7743ccbd3f2b",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"tasks",
+										"5d08f1b24cfb7743ccbd3f2b"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "51edda26-11d7-4412-947c-60c8ef10f1b2",
+										"exec": [
+											"if(pm.response.code === 200) {",
+											"    pm.environment.set('authToken', pm.response.json().token)",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"test@xiix.com\",\n\t\"password\": \"password1234\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/users/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "51edda26-11d7-4412-947c-60c8ef10f1b2",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/users/logout",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout All",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "51edda26-11d7-4412-947c-60c8ef10f1b2",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/users/logoutAll",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"logoutAll"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fde3873f-42f9-474f-8f77-7911fc2a9ad2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "931fdded-06f3-4701-8937-8ada8567e3f8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

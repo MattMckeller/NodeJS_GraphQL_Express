@@ -1,0 +1,11 @@
+- This App was meant for educational purposes -
+- Topics covered -
+NodeJS/Express/MongoDB + Mongoose
+REST
+Async/Await & Promises
+Authentication w/ JWT & Bcrypt
+Access control/Query restrictions
+Http Requests with "Request" npm package
+Commands with Yargs i.e. node app.js getWeather --city="New York"
+Postman
+DotEnv
