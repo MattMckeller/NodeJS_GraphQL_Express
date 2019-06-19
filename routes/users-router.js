@@ -1,8 +1,8 @@
-const UserModel = require('../src/models/user-model');
+const UserModel = require('../src/rest/models/user-model');
 
 const express = require('express');
 const router = express.Router();
-const authenticationMw = require('../src/middleware/authentication-mw');
+const authenticationMw = require('../src/rest/middleware/authentication-mw');
 
 router.param('id', function (req, res, next, id) {
     console.log('CALLED ONLY ONCE');
