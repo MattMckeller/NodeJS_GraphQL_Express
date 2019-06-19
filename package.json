@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start-rest": "node ./bin/rest"
+    "start-rest": "node ./bin/rest",
+    "get-weather": "node rest-app.js getWeather --city=\"Boca Raton\""
   },
   "dependencies": {
     "@types/mongodb": "^3.1.28",
