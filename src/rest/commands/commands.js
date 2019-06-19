@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const getWeatherForCity = require('../src/rest/weather/get-weather-for-city');
+const getWeatherForCity = require('../weather/get-weather-for-city');
 yargs.version();
 yargs
     .command('get', 'make a get HTTP request', {

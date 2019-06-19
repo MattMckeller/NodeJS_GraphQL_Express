@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const TaskModel = require('../src/rest/models/task-model');
-const authenticationMw = require('../src/rest/middleware/authentication-mw');
+const TaskModel = require('../models/task-model');
+const authenticationMw = require('../middleware/authentication-mw');
 
 router.post('/', authenticationMw, async (req, res, next) => {
     const task = new TaskModel({

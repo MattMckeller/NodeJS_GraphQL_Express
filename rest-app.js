@@ -5,12 +5,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('./src/rest/db/mongoose');
 require('dotenv').config();
-require('./commands/commands'); // Yargs commands
+require('./src/rest/commands/commands'); // Yargs commands
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users-router');
-const weatherRouter = require('./routes/weather');
-const taskRouter = require('./routes/task-router');
+const indexRouter = require('./src/rest/routes/index');
+const usersRouter = require('./src/rest/routes/users-router');
+const weatherRouter = require('./src/rest/routes/weather');
+const taskRouter = require('./src/rest/routes/task-router');
 
 const restApp = express();
 
