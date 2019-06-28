@@ -1,11 +1,22 @@
-- This App was meant for educational purposes -
+- These Apps are meant for educational purposes -
 - Topics covered -
+##REST APP##
+Rest, CRUD operations
 NodeJS/Express/MongoDB + Mongoose
-REST
-Async/Await & Promises
+Middleware
 Authentication w/ JWT & Bcrypt
 Access control/Query restrictions
 Http Requests with "Request" npm package
 Commands with Yargs i.e. node app.js getWeather --city="New York"
 Postman
 DotEnv
+Async/Await & Promises
+
+##GRAPHQL APP##
+Type Definitions
+Query
+Mutation
+Subscriptions
+Graphql yoga package
+Babel-env
+Enums
