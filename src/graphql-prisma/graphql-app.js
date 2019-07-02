@@ -7,12 +7,13 @@ import Post from "./resolvers/Post";
 import User from "./resolvers/User";
 import Comment from "./resolvers/Comment";
 import Subscription from "./resolvers/Subscription";
+import './prisma';
 
 const pubsub = new PubSub();
 
 // Importing it this way because for some reason my machine doesn't allow .graphql extensions to be writable
 // and yoga graphql doesn't allow string reference to non .graphql file type??
-const typeDefs = fs.readFileSync('./src/graphql/schema.gql', 'utf8');
+const typeDefs = fs.readFileSync('src/graphql-prisma/schema.gql', 'utf8');
 
 const server = new GraphQLServer({
     typeDefs,
