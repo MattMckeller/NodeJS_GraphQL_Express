@@ -6,7 +6,8 @@
     "start-rest": "node ./bin/rest",
     "get-weather": "node ./src/rest/rest-app.js getWeather --city=\"Boca Raton\"",
     "start-graphql-basics": "nodemon ./src/graphql-basics/graphql-app --exec babel-node --ext js,gql",
-    "start-graphql-prisma": "nodemon ./src/graphql-prisma/graphql-app --exec babel-node --ext js,gql"
+    "start-graphql-prisma": "nodemon ./src/graphql-prisma/graphql-app --exec babel-node --ext js,gql",
+    "get-schema": "cd ./src/graphql-prisma && graphql get-schema -p prisma-proj"
   },
   "dependencies": {
     "@types/mongodb": "^3.1.28",
@@ -26,6 +27,7 @@
     "mongodb": "^3.2.7",
     "mongoose": "^5.5.14",
     "morgan": "~1.9.1",
+    "prisma-binding": "^2.3.15",
     "pug": "2.0.0-beta11",
     "request": "^2.88.0",
     "uuid": "^3.3.2",
@@ -35,6 +37,7 @@
   "devDependencies": {
     "@types/mongoose": "^5.5.6",
     "@types/validator": "^10.11.1",
+    "graphql-cli": "^3.0.11",
     "prisma": "^1.34.0"
   }
 }

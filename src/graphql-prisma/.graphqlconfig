@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "prisma-proj": {
+      "schemaPath": "generated/prisma.graphql",
+      "extensions": {
+        "endpoints": {
+          "default": "http://localhost:4466"
+        }
+      }
+    }
+  }
+}
