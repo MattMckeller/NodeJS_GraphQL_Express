@@ -13,7 +13,7 @@ const pubsub = new PubSub();
 
 // Importing it this way because for some reason my machine doesn't allow .graphql extensions to be writable
 // and yoga graphql doesn't allow string reference to non .graphql file type??
-const typeDefs = fs.readFileSync('./src/graphql-basics/schema.gql', 'utf8');
+const typeDefs = fs.readFileSync('src/graphql-basics/schema.gql', 'utf8');
 
 const server = new GraphQLServer({
     typeDefs,
