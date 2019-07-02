@@ -1,12 +1,12 @@
 import {GraphQLServer, PubSub} from "graphql-yoga";
 const fs = require('fs');
-import db from './src/graphql/db';
-import Query from "./src/graphql/resolvers/Query";
-import Mutation from "./src/graphql/resolvers/Mutation";
-import Post from "./src/graphql/resolvers/Post";
-import User from "./src/graphql/resolvers/User";
-import Comment from "./src/graphql/resolvers/Comment";
-import Subscription from "./src/graphql/resolvers/Subscription";
+import db from './db';
+import Query from "./resolvers/Query";
+import Mutation from "./resolvers/Mutation";
+import Post from "./resolvers/Post";
+import User from "./resolvers/User";
+import Comment from "./resolvers/Comment";
+import Subscription from "./resolvers/Subscription";
 
 const pubsub = new PubSub();
 
