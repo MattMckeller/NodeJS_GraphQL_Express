@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../rest-app');
+var app = require('../src/rest/rest-app');
 var debug = require('debug')('learningnodejs:server');
 var http = require('http');
 
