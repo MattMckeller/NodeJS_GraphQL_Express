@@ -1,4 +1,5 @@
 import {GraphQLServer, PubSub} from "graphql-yoga";
+
 const fs = require('fs');
 import db from './db';
 import Query from "./resolvers/Query";
@@ -7,7 +8,7 @@ import Post from "./resolvers/Post";
 import User from "./resolvers/User";
 import Comment from "./resolvers/Comment";
 import Subscription from "./resolvers/Subscription";
-import './prisma';
+import './prisma-app';
 
 const pubsub = new PubSub();
 
