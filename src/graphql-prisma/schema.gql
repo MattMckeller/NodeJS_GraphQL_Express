@@ -1,7 +1,7 @@
 type Query {
     users(query: String): [User!]!
     me: User
-    post(query: String): [Post!]!
+    posts(query: String): [Post!]!
     comments(query: String): [Comment!]!
 }
 
@@ -61,7 +61,6 @@ type User {
     id: ID!
     name: String!
     email: String!
-    age: Int
     posts: [Post!]!
     comments: [Comment!]!
 }

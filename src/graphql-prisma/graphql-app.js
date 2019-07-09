@@ -8,7 +8,7 @@ import Post from "./resolvers/Post";
 import User from "./resolvers/User";
 import Comment from "./resolvers/Comment";
 import Subscription from "./resolvers/Subscription";
-import './prisma-app';
+import prisma from './prisma-app';
 
 const pubsub = new PubSub();
 
@@ -29,9 +29,10 @@ const server = new GraphQLServer({
     context: {
         db,
         pubsub,
+        prisma
     },
 });
 
 server.start(() => {
-    console.log('started server');
+    console.log('started server on localhost:4000');
 });

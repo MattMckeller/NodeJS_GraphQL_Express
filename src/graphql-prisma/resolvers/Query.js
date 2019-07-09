@@ -1,13 +1,18 @@
 const Query = {
-    users(parent, args, {db}, info) {
-        const {query} = args;
-        if (!query) {
-            return db.users;
+    users(parent, args, {prisma}, info) {
+        const opArgs = {};
+
+        if (args.query) {
+            opArgs.where = {
+                OR: [{
+                    name_contains: args.query
+                }, {
+                    email_contains: args.query
+                }]
+            };
         }
 
-        return db.users.filter((user) => {
-            return user.name.toLowerCase().includes(query.toLowerCase());
-        });
+        return prisma.query.users(opArgs, info);
     },
     me() {
         return {
@@ -16,24 +21,31 @@ const Query = {
             email: 'adgfj@xiix.com',
         }
     },
-    post(parents, args, {db}, info) {
-        const {query} = args;
-        if (!query) {
-            return db.posts;
+    posts(parents, args, {prisma}, info) {
+        const opArgs = {};
+
+        if (args.query) {
+            opArgs.where = {
+                OR: [{
+                    title_contains: args.query
+                }, {
+                    body_contains: args.query
+                }]
+            }
         }
-        return db.posts.filter(({title, body}) => {
-            return title.toLowerCase().includes(query.toLowerCase())
-                || body.toLowerCase().includes(query.toLowerCase());
-        });
+
+        return prisma.query.posts(opArgs, info);
     },
-    comments(parents, args, {db}, info) {
-        const {query} = args;
-        if (!query) {
-            return db.comments;
-        } else {
-            return db.comments.filter(comment => comment.text.toLowerCase().includes(query.toLowerCase()));
+    comments(parents, args, {db, prisma}, info) {
+        const opArgs = {};
+        if (args.query) {
+            opArgs.where = {
+                text_contains: args.query
+            }
         }
+
+        return prisma.query.comments(opArgs, info);
     }
 };
 
-export { Query as default };
+export {Query as default};
