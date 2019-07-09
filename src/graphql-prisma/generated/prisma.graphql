@@ -1,6 +1,11 @@
 # source: http://localhost:4466
 # timestamp: Tue Jul 02 2019 15:08:52 GMT-0400 (Eastern Daylight Time)
 
+###################################################################################################
+# This file is used by prisma-bindings since prisma graphql definitions are very minimal and much #
+# more is generated behind the scenes                                                             #
+###################################################################################################
+
 type AggregateComment {
   count: Int!
 }
