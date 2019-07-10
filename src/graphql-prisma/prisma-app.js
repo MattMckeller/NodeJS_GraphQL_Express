@@ -1,8 +1,11 @@
 import {Prisma} from 'prisma-binding';
 
+require('dotenv').config();
+
 const prisma = new Prisma({
     typeDefs: 'src/graphql-prisma/generated/prisma.graphql',
     endpoint: 'http://localhost:4466',
+    secret: process.env.PRISMA_SECRET
 });
 
 export {prisma as default}
