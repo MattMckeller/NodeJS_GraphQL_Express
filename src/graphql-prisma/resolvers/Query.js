@@ -19,6 +19,7 @@ const Query = {
             id: '123',
             name: 'Bob',
             email: 'adgfj@xiix.com',
+            password: 'abc',
         }
     },
     posts(parents, args, {prisma}, info) {

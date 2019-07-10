@@ -1,0 +1,1 @@
+.graphqlconfig -> "extensions": {"prisma": "prisma/prisma.yml"} allows for get-schema to work without the need for a token
