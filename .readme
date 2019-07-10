@@ -9,13 +9,22 @@ Access control/Query restrictions
 Http Requests with "Request" npm package
 Commands with Yargs i.e. node app.js getWeather --city="New York"
 Postman
-DotEnv
-Async/Await & Promises
+
 
 ##GRAPHQL APP##
-Type Definitions
-Query
-Mutation
-Subscriptions
+GraphQL Type Definitions
+Query, Mutation, Subscriptions. CRUD Methods
 Graphql yoga package
+Prisma
+Prisma-bindings - access prisma from nodejs
+Postgres
+Authentication w/ JWT
+GraphQL Playground
+
+##General##
+DotEnv
+Async/Await & Promises
 Babel-env
+
+
+// todo add comments for how to use graphql playground w/ auth
