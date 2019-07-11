@@ -1,8 +1,10 @@
 type Query {
     users(query: String): [User!]!
     me: User
+    myPosts(query: String): [Post!]!
     posts(query: String): [Post!]!
     comments(query: String): [Comment!]!
+    post(id: ID!): Post!
 }
 
 type Mutation {
@@ -68,7 +70,7 @@ input UpdateCommentInput {
 type User {
     id: ID!
     name: String!
-    email: String!
+    email: String #Do not want to return email for users other than the authenticated user
     password: String!
     posts: [Post!]!
     comments: [Comment!]!

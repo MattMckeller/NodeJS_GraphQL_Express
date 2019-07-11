@@ -1,11 +1,13 @@
 import {Prisma} from 'prisma-binding';
+import {fragmentReplacements} from "./resolvers";
 
 require('dotenv').config();
 
 const prisma = new Prisma({
     typeDefs: 'src/graphql-prisma/generated/prisma.graphql',
     endpoint: 'http://localhost:4466',
-    secret: process.env.PRISMA_SECRET
+    secret: process.env.PRISMA_SECRET, // prevents users from directly accessing the endpoint w/o a token
+    fragmentReplacements
 });
 
 export {prisma as default}
