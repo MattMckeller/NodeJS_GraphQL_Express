@@ -1,5 +1,6 @@
+import {generateJwt} from "../utils/generate-jwt";
+
 const bcrypt = require('bcryptjs');
-import jwt from 'jsonwebtoken';
 import getUserId from '../utils/get-user-id';
 
 const Mutation = {
@@ -14,7 +15,7 @@ const Mutation = {
             throw new Error('Invalid credentials');
         }
 
-        const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET);
+        const token = generateJwt(user.id);
 
         return {
             user,
@@ -29,7 +30,7 @@ const Mutation = {
         data.password = await bcrypt.hash(data.password, 8);
 
         const user = await prisma.mutation.createUser({data});
-        const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET);
+        const token = generateJwt(user.id);
 
         return {
             user,
