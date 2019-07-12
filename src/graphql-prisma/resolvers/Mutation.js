@@ -85,9 +85,18 @@ const Mutation = {
                 id: userId
             }
         });
+        const postIsPublished = await prisma.exists.Post({
+            id,
+            published: true,
+        });
 
         if (!postExists) {
             throw new Error('Unable to delete post')
+        }
+
+        if (postIsPublished && data.published === false) {
+            // delete all comments for post
+            await prisma.mutation.deleteManyComments({where: {post: {id}}});
         }
 
         return prisma.mutation.updatePost({
@@ -97,8 +106,13 @@ const Mutation = {
             data
         });
     },
-    createComment(parent, {data}, {prisma, request}, info) {
+    async createComment(parent, {data}, {prisma, request}, info) {
         const userId = getUserId(request);
+        const postIsPublished = await prisma.exists.Post({id: data.post, published: true});
+
+        if (!postIsPublished) {
+            throw new Error('Can not comment on an unpublished post')
+        }
 
         data = {
             ...data,
