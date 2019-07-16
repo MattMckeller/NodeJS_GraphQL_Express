@@ -1,4 +1,5 @@
 import {GraphQLServer, PubSub} from "graphql-yoga";
+import {importSchema} from 'graphql-import'
 
 const fs = require('fs');
 import db from './db';
@@ -8,9 +9,8 @@ import {resolvers} from "./resolvers";
 
 const pubsub = new PubSub();
 
-// Importing it this way because for some reason my machine doesn't allow .graphql extensions to be writable
-// and yoga graphql doesn't allow string reference to non .graphql file type??
-const typeDefs = fs.readFileSync('src/graphql-prisma/schema.gql', 'utf8');
+// Workaround for system issues with graphql files, and graphql-import enabled schema import statements.
+const typeDefs = importSchema(fs.readFileSync('src/graphql-prisma/schema.gql', 'utf8'));
 
 const server = new GraphQLServer({
     typeDefs,
