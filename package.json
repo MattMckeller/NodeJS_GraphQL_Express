@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run start-graphql-prisma-prod",
     "start-rest": "node ./bin/rest",
     "get-weather": "node ./src/rest/rest-app.js getWeather --city=\"Boca Raton\"",
     "start-graphql-basics": "nodemon ./src/graphql-basics/graphql-app --exec babel-node --ext js,gql",
-    "start-graphql-prisma-dev": "env-cmd -f ./.env-dev nodemon ./src/graphql-prisma/graphql-app --exec babel-node --ext js,gql",
-    "start-graphql-prisma-prod": "node ./graphql-prisma-dist/graphql-app",
-    "heroku-postbuild": "babel src/graphql-prisma --out-dir graphql-prisma-dist --copy-files",
-    "get-schema": "cd ./src/graphql-prisma && graphql get-schema -p prisma-proj --dotenv=../../.env",
-    "get-prisma-token": "cd ./src/graphql-prisma && prisma token -e=../../.env"
+
+    "init-graphql-prisma-project": "cd ./src/graphql-prisma/prisma && docker-compose up -d && cd ../../../ && npm run prisma-deploy",
+    "prisma-deploy": "cd src/graphql-prisma && prisma deploy -e=./../../.env-dev && cd ../../",
+    "get-schema": "cd ./src/graphql-prisma && graphql get-schema -p prisma-proj --dotenv=../../.env-dev",
+    "get-prisma-token": "cd ./src/graphql-prisma && prisma token -e=../../.env",
+    "start-graphql-prisma": "env-cmd -f ./.env-dev nodemon ./src/graphql-prisma/graphql-app --exec babel-node --ext js,gql",
+
+    "prisma-deploy-prod": "npm run start-graphql-prisma-prod",
+    "heroku-postbuild": "babel src/graphql-prisma --out-dir graphql-prisma-dist --copy-files && npm run prisma-deploy",
+    "start": "npm run start-graphql-prisma-prod",
+    "start-graphql-prisma-prod": "node ./graphql-prisma-dist/graphql-app"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
