@@ -1,0 +1,3 @@
+node_modules/
+graphql-prisma-dist/
+src/graphql-prisma/backups/
