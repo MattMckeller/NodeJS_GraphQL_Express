@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import {GraphQLServer, PubSub} from "graphql-yoga";
 import {importSchema} from 'graphql-import'
 
@@ -24,7 +25,7 @@ const server = new GraphQLServer({
         }
     }
 });
-
-server.start(() => {
-    console.log('started server on localhost:4000');
+const port = process.env.PORT || 4000;
+server.start({port}, () => {
+    console.log('started server on port:' + port);
 });
