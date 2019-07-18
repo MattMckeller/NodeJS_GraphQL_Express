@@ -1,30 +1,96 @@
-- These Apps are meant for educational purposes -
-- Topics covered -
-##REST APP##
-Rest, CRUD operations
-NodeJS/Express/MongoDB + Mongoose
-Middleware
-Authentication w/ JWT & Bcrypt
-Access control/Query restrictions
-Http Requests with "Request" npm package
-Commands with Yargs i.e. node app.js getWeather --city="New York"
-Postman
+
+_These Apps are meant for educational purposes. Demo of one at the bottom_
 
 
-##GRAPHQL APP##
-GraphQL Type Definitions
-Query, Mutation, Subscriptions. CRUD Methods
-Graphql yoga package
-Prisma
-Prisma-bindings - access prisma from nodejs
-Postgres
-Authentication w/ JWT
-GraphQL Playground
+### REST APP Topics
+Rest, CRUD operations  
+NodeJS/Express/MongoDB + Mongoose  
+Middleware  
+Authentication w/ JWT & Bcrypt  
+Access control/Query restrictions  
+Http Requests with "Request" npm package  
+Commands with Yargs i.e. node app.js getWeather --city="New York"  
+Postman  
+  
 
-##General##
-DotEnv
-Async/Await & Promises
-Babel-env
-
-
-// todo add comments for how to use graphql playground w/ auth
+### GRAPHQL APP Topics
+GraphQL Type Definitions  
+Query, Mutation, Subscriptions. CRUD Methods  
+Graphql yoga package  
+Prisma  
+Prisma-bindings - access prisma from nodejs  
+Postgres  
+Authentication w/ JWT  
+GraphQL Playground  
+  
+## Other notable topics  
+DotEnv  
+Async/Await & Promises  
+Babel
+Babel-env  
+  
+  
+## Demo of Graphql Prisma App
+[Demo - Click Here](https://mm-gql-prisma.herokuapp.com/)  : Wait for it to load ( server is sleeping )
+#### Example Query ####  
+```  
+  
+# Get all users  
+query {  
+  users {  
+    id  
+    name  
+    email  
+  }  
+  posts {  
+    id  
+    title  
+    body  
+  }  
+}  
+  
+```  
+#### Authenticating Through Playground(UI) -  Create user  
+```  
+# Request - Create an account & get auth token  
+mutation {  
+ createUser(data: {  
+   name: "Test1234",  
+   email: "Test1234@xiix.com",  
+   password: "test1243"  
+ }) {  
+   token  
+  user {  
+    id  
+    name  
+    email  
+  }  
+ }  
+}  
+  
+# Response  
+{  
+  "data": {  
+    "createUser": {  
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjank5M3lneXQwMDA3MDc0MXk3bjFlcTJuIiwiaWF0IjoxNTYzNDgwNTYwLCJleHAiOjE1NjQwODUzNjB9.mrNsaPRrP6SU3IEzEGrIHciqJRxHBVmNdyWg2HNuzVA",  
+      "user": {  
+        "id": "cjy93ygyt00070741y7n1eq2n",  
+        "name": "Test1234",  
+        "email": null  
+      }  
+    }  
+  }  
+}  
+  
+# Copy token -> click HTTP HEADERS at the bottom so an editable panel
+# pops up  
+# Add auth header as below  
+{  
+  "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjank5M3lneXQwMDA3MDc0MXk3bjFlcTJuIiwiaWF0IjoxNTYzNDgwNTYwLCJleHAiOjE1NjQwODUzNjB9.mrNsaPRrP6SU3IEzEGrIHciqJRxHBVmNdyWg2HNuzVA"  
+}  
+  
+# Re submit first query, you should see your user and the email
+# address for your user, but for no other user. Methods requiring
+# authentication will now work as long as you have the header set  
+  
+```
