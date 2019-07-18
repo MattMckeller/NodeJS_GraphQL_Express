@@ -13,8 +13,9 @@
     "start-graphql-prisma": "env-cmd -f ./.env-dev nodemon ./src/graphql-prisma/graphql-app --exec babel-node --ext js,gql",
 
     "get-prisma-prod-token": "cd ./src/graphql-prisma && prisma token -e=../../.env-prod && cd ../../",
-    "prisma-deploy-prod": "cd src/graphql-prisma && prisma deploy -e=./../../.env-prod && cd ../../",
-    "heroku-postbuild": "babel src/graphql-prisma --out-dir graphql-prisma-dist --copy-files && npm run start-docker && npm run prisma-deploy",
+    "prisma-deploy-prod-local": "cd src/graphql-prisma && prisma deploy -e=./../../.env-prod && cd ../../",
+    "prisma-deploy-prod-server": "prisma deploy",
+    "heroku-postbuild": "babel src/graphql-prisma --out-dir graphql-prisma-dist --copy-files && npm run start-docker && npm run prisma-deploy-prod-server",
     "start": "npm run start-graphql-prisma-prod",
     "start-graphql-prisma-prod": "node ./graphql-prisma-dist/graphql-app"
   },
