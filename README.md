@@ -1,4 +1,4 @@
-# Learning NodeJS/GraphQL
+# NodeJS/GraphQL/Express
 
 
 See *src/graphql-prisma* for Apollo/Prisma/Postgres
